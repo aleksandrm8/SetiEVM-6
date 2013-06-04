@@ -1,4 +1,3 @@
-
 // SMTPDlg.cpp : файл реализации
 //
 
@@ -128,7 +127,7 @@ void COptionsDlg::OnBnClickedOk()
 	CString Port;
 	CPort.GetWindowTextW(Port);
 	USES_CONVERSION;
-	Options.Port = atoi(T2A((LPCTSTR)Port));
+	Options.Port = _wtoi(Port);
 	
 	CLogin.GetWindowTextW(Options.Login);
 	CPassword.GetWindowTextW(Options.Password);
