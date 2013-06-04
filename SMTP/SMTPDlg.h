@@ -1,5 +1,5 @@
 
-// SMTPDlg.h : файл заголовка
+// SMTPDlg.h : С„Р°Р№Р» Р·Р°РіРѕР»РѕРІРєР°
 //
 
 #pragma once
@@ -9,25 +9,25 @@
 #include <string>
 
 
-// диалоговое окно CSMTPDlg
+// РґРёР°Р»РѕРіРѕРІРѕРµ РѕРєРЅРѕ CSMTPDlg
 class CSMTPDlg : public CDialogEx
 {
-// Создание
+// РЎРѕР·РґР°РЅРёРµ
 public:
-	CSMTPDlg(CWnd* pParent = NULL);	// стандартный конструктор
+	CSMTPDlg(CWnd* pParent = NULL);	// СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 
-// Данные диалогового окна
+// Р”Р°РЅРЅС‹Рµ РґРёР°Р»РѕРіРѕРІРѕРіРѕ РѕРєРЅР°
 	enum { IDD = IDD_SMTP_DIALOG };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// поддержка DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);	// РїРѕРґРґРµСЂР¶РєР° DDX/DDV
 
 
-// Реализация
+// Р РµР°Р»РёР·Р°С†РёСЏ
 protected:
 	HICON m_hIcon;
 
-	// Созданные функции схемы сообщений
+	// РЎРѕР·РґР°РЅРЅС‹Рµ С„СѓРЅРєС†РёРё СЃС…РµРјС‹ СЃРѕРѕР±С‰РµРЅРёР№
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
@@ -40,7 +40,7 @@ public:
 	CEdit CText;
 	CEdit CInfo;
 
-	// Структура сообщений.
+	// РЎС‚СЂСѓРєС‚СѓСЂР° СЃРѕРѕР±С‰РµРЅРёР№.
 	struct SendDataStruct {
 		CString From;
 		CString To;
@@ -49,7 +49,7 @@ public:
 	};
 	std::vector <SendDataStruct> SendData;
 
-	// Структура настроек SMTP.
+	// РЎС‚СЂСѓРєС‚СѓСЂР° РЅР°СЃС‚СЂРѕРµРє SMTP.
 	struct OptionsStruct {
 		CString Server;
 		int Port;
@@ -59,30 +59,30 @@ public:
 	};
 	struct OptionsStruct Options;
 
-	// Флаг очереди.
+	// Р¤Р»Р°Рі РѕС‡РµСЂРµРґРё.
 	int Process;
 
-	// Вызов окна настроек.
+	// Р’С‹Р·РѕРІ РѕРєРЅР° РЅР°СЃС‚СЂРѕРµРє.
 	afx_msg void OnBnClickedBoptions();
-	// Подготовка к отправке письма.
+	// РџРѕРґРіРѕС‚РѕРІРєР° Рє РѕС‚РїСЂР°РІРєРµ РїРёСЃСЊРјР°.
 	afx_msg void OnBnClickedBsend();
 
-	// Отправка письма.
+	// РћС‚РїСЂР°РІРєР° РїРёСЃСЊРјР°.
 	static AFX_THREADPROC Sending(LPVOID pParam);
 
-	// Удобный вывод сообщения.
+	// РЈРґРѕР±РЅС‹Р№ РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ.
 	void PrintMessage(CString Message);
 	static void PrintMessage(CSMTPDlg* Dlg, CString Message);
-	// Удобный перевод числа в CString.
+	// РЈРґРѕР±РЅС‹Р№ РїРµСЂРµРІРѕРґ С‡РёСЃР»Р° РІ CString.
 	static CString intToCStr(int value);
-	// Удобный перевод CString в String.
+	// РЈРґРѕР±РЅС‹Р№ РїРµСЂРµРІРѕРґ CString РІ String.
 	static std::string CStrToStr(CString Value);
-	// Удобное получение IP из имени.
+	// РЈРґРѕР±РЅРѕРµ РїРѕР»СѓС‡РµРЅРёРµ IP РёР· РёРјРµРЅРё.
 	static DWORD hNameToIP(CString Name);
-	// Удобное выделение кода результата.
+	// РЈРґРѕР±РЅРѕРµ РІС‹РґРµР»РµРЅРёРµ РєРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р°.
 	static int GetRCode(char buff[]);
-	// Удобный приём кода результата.
+	// РЈРґРѕР±РЅС‹Р№ РїСЂРёС‘Рј РєРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р°.
 	static int RecvRCode(CSMTPDlg* Dlg, SOCKET s, int FirstValidCode, int SecondValidCode);
-	// Удобная отправка запроса.
+	// РЈРґРѕР±РЅР°СЏ РѕС‚РїСЂР°РІРєР° Р·Р°РїСЂРѕСЃР°.
 	static int SendQuery(SOCKET s, CSMTPDlg * Dlg, std::string buffer);
 };

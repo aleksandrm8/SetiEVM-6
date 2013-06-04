@@ -1,5 +1,5 @@
 
-// SMTPDlg.cpp : файл реализации
+// SMTPDlg.cpp : С„Р°Р№Р» СЂРµР°Р»РёР·Р°С†РёРё
 //
 
 #include "stdafx.h"
@@ -20,20 +20,20 @@
 #endif
 
 
-// Диалоговое окно CAboutDlg используется для описания сведений о приложении
+// Р”РёР°Р»РѕРіРѕРІРѕРµ РѕРєРЅРѕ CAboutDlg РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РѕРїРёСЃР°РЅРёСЏ СЃРІРµРґРµРЅРёР№ Рѕ РїСЂРёР»РѕР¶РµРЅРёРё
 
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-// Данные диалогового окна
+// Р”Р°РЅРЅС‹Рµ РґРёР°Р»РѕРіРѕРІРѕРіРѕ РѕРєРЅР°
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // поддержка DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);    // РїРѕРґРґРµСЂР¶РєР° DDX/DDV
 
-// Реализация
+// Р РµР°Р»РёР·Р°С†РёСЏ
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -54,20 +54,20 @@ END_MESSAGE_MAP()
 
 
 
-// диалоговое окно COptionsDlg
+// РґРёР°Р»РѕРіРѕРІРѕРµ РѕРєРЅРѕ COptionsDlg
 
 class COptionsDlg : public CDialogEx
 {
 public:
 	COptionsDlg();
 
-	// Данные диалогового окна
+	// Р”Р°РЅРЅС‹Рµ РґРёР°Р»РѕРіРѕРІРѕРіРѕ РѕРєРЅР°
 	enum { IDD = DOptions };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // поддержка DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);    // РїРѕРґРґРµСЂР¶РєР° DDX/DDV
 
-	// Реализация
+	// Р РµР°Р»РёР·Р°С†РёСЏ
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
@@ -77,7 +77,7 @@ public:
 	CEdit CPassword;
 	CEdit CSender;
 
-	// Структура конфигурации.
+	// РЎС‚СЂСѓРєС‚СѓСЂР° РєРѕРЅС„РёРіСѓСЂР°С†РёРё.
 	struct OptionsStruct {
 		CString Server;
 		int Port;
@@ -104,7 +104,7 @@ void COptionsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, SPassword, CPassword);
 	DDX_Control(pDX, SSender, CSender);
 
-	// Заполнение данными.
+	// Р—Р°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹РјРё.
 	CServer.SetWindowTextW(Options.Server);
 	
 	CString Port;
@@ -122,7 +122,7 @@ END_MESSAGE_MAP()
 
 void COptionsDlg::OnBnClickedOk()
 {
-	// Сохраняем данные для передачи.
+	// РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ РґР»СЏ РїРµСЂРµРґР°С‡Рё.
 	CServer.GetWindowTextW(Options.Server);
 
 	CString Port;
@@ -140,7 +140,7 @@ void COptionsDlg::OnBnClickedOk()
 
 
 
-// диалоговое окно CSMTPDlg
+// РґРёР°Р»РѕРіРѕРІРѕРµ РѕРєРЅРѕ CSMTPDlg
 
 
 
@@ -170,15 +170,15 @@ BEGIN_MESSAGE_MAP(CSMTPDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// обработчики сообщений CSMTPDlg
+// РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕРѕР±С‰РµРЅРёР№ CSMTPDlg
 
 BOOL CSMTPDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// Добавление пункта "О программе..." в системное меню.
+	// Р”РѕР±Р°РІР»РµРЅРёРµ РїСѓРЅРєС‚Р° "Рћ РїСЂРѕРіСЂР°РјРјРµ..." РІ СЃРёСЃС‚РµРјРЅРѕРµ РјРµРЅСЋ.
 
-	// IDM_ABOUTBOX должен быть в пределах системной команды.
+	// IDM_ABOUTBOX РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Р°С… СЃРёСЃС‚РµРјРЅРѕР№ РєРѕРјР°РЅРґС‹.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -196,12 +196,12 @@ BOOL CSMTPDlg::OnInitDialog()
 		}
 	}
 
-	// Задает значок для этого диалогового окна. Среда делает это автоматически,
-	//  если главное окно приложения не является диалоговым
-	SetIcon(m_hIcon, TRUE);			// Крупный значок
-	SetIcon(m_hIcon, FALSE);		// Мелкий значок
+	// Р—Р°РґР°РµС‚ Р·РЅР°С‡РѕРє РґР»СЏ СЌС‚РѕРіРѕ РґРёР°Р»РѕРіРѕРІРѕРіРѕ РѕРєРЅР°. РЎСЂРµРґР° РґРµР»Р°РµС‚ СЌС‚Рѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё,
+	//  РµСЃР»Рё РіР»Р°РІРЅРѕРµ РѕРєРЅРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РґРёР°Р»РѕРіРѕРІС‹Рј
+	SetIcon(m_hIcon, TRUE);			// РљСЂСѓРїРЅС‹Р№ Р·РЅР°С‡РѕРє
+	SetIcon(m_hIcon, FALSE);		// РњРµР»РєРёР№ Р·РЅР°С‡РѕРє
 
-	// TODO: добавьте дополнительную инициализацию
+	// TODO: РґРѕР±Р°РІСЊС‚Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЋ
 	Options.Server   = L"";
 	Options.Port     = 25;
 	Options.Login    = L"";
@@ -211,7 +211,7 @@ BOOL CSMTPDlg::OnInitDialog()
 
 	Process = 0;
 
-	return TRUE;  // возврат значения TRUE, если фокус не передан элементу управления
+	return TRUE;  // РІРѕР·РІСЂР°С‚ Р·РЅР°С‡РµРЅРёСЏ TRUE, РµСЃР»Рё С„РѕРєСѓСЃ РЅРµ РїРµСЂРµРґР°РЅ СЌР»РµРјРµРЅС‚Сѓ СѓРїСЂР°РІР»РµРЅРёСЏ
 }
 
 void CSMTPDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -227,19 +227,19 @@ void CSMTPDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// При добавлении кнопки свертывания в диалоговое окно нужно воспользоваться приведенным ниже кодом,
-//  чтобы нарисовать значок. Для приложений MFC, использующих модель документов или представлений,
-//  это автоматически выполняется рабочей областью.
+// РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё РєРЅРѕРїРєРё СЃРІРµСЂС‚С‹РІР°РЅРёСЏ РІ РґРёР°Р»РѕРіРѕРІРѕРµ РѕРєРЅРѕ РЅСѓР¶РЅРѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РїСЂРёРІРµРґРµРЅРЅС‹Рј РЅРёР¶Рµ РєРѕРґРѕРј,
+//  С‡С‚РѕР±С‹ РЅР°СЂРёСЃРѕРІР°С‚СЊ Р·РЅР°С‡РѕРє. Р”Р»СЏ РїСЂРёР»РѕР¶РµРЅРёР№ MFC, РёСЃРїРѕР»СЊР·СѓСЋС‰РёС… РјРѕРґРµР»СЊ РґРѕРєСѓРјРµРЅС‚РѕРІ РёР»Рё РїСЂРµРґСЃС‚Р°РІР»РµРЅРёР№,
+//  СЌС‚Рѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ СЂР°Р±РѕС‡РµР№ РѕР±Р»Р°СЃС‚СЊСЋ.
 
 void CSMTPDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // контекст устройства для рисования
+		CPaintDC dc(this); // РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Выравнивание значка по центру клиентского прямоугольника
+		// Р’С‹СЂР°РІРЅРёРІР°РЅРёРµ Р·РЅР°С‡РєР° РїРѕ С†РµРЅС‚СЂСѓ РєР»РёРµРЅС‚СЃРєРѕРіРѕ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -247,7 +247,7 @@ void CSMTPDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// Нарисуйте значок
+		// РќР°СЂРёСЃСѓР№С‚Рµ Р·РЅР°С‡РѕРє
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -256,71 +256,71 @@ void CSMTPDlg::OnPaint()
 	}
 }
 
-// Система вызывает эту функцию для получения отображения курсора при перемещении
-//  свернутого окна.
+// РЎРёСЃС‚РµРјР° РІС‹Р·С‹РІР°РµС‚ СЌС‚Сѓ С„СѓРЅРєС†РёСЋ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё
+//  СЃРІРµСЂРЅСѓС‚РѕРіРѕ РѕРєРЅР°.
 HCURSOR CSMTPDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
 
-// Вызов окна настроек.
+// Р’С‹Р·РѕРІ РѕРєРЅР° РЅР°СЃС‚СЂРѕРµРє.
 void CSMTPDlg::OnBnClickedBoptions()
 {
 	COptionsDlg OptionsDlg;
 
-	// Заполнение форм данными.
+	// Р—Р°РїРѕР»РЅРµРЅРёРµ С„РѕСЂРј РґР°РЅРЅС‹РјРё.
 	OptionsDlg.Options.Server   = Options.Server;
 	OptionsDlg.Options.Port     = Options.Port;
 	OptionsDlg.Options.Login    = Options.Login;
 	OptionsDlg.Options.Password = Options.Password;
 	OptionsDlg.Options.Sender   = Options.Sender;
 
-	// Вызов диалога.
+	// Р’С‹Р·РѕРІ РґРёР°Р»РѕРіР°.
 	int RCode = -1;
 	RCode = OptionsDlg.DoModal();
 
-	// Обработка результатов.
+	// РћР±СЂР°Р±РѕС‚РєР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 	switch(RCode) {
 
 	case -1: 
-		// Окно не открылось.
-		PrintMessage(L"Не могу открыть окно!");
+		// РћРєРЅРѕ РЅРµ РѕС‚РєСЂС‹Р»РѕСЃСЊ.
+		PrintMessage(L"РќРµ РјРѕРіСѓ РѕС‚РєСЂС‹С‚СЊ РѕРєРЅРѕ!");
 		break;
 
 	case IDABORT:
-		// Окно закрыто.
-		PrintMessage(L"Настройки не сохранены!");
+		// РћРєРЅРѕ Р·Р°РєСЂС‹С‚Рѕ.
+		PrintMessage(L"РќР°СЃС‚СЂРѕР№РєРё РЅРµ СЃРѕС…СЂР°РЅРµРЅС‹!");
 		break;
 
 	case IDOK:
-		// Применение настроек.
+		// РџСЂРёРјРµРЅРµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє.
 		Options.Server   = OptionsDlg.Options.Server;
 		Options.Port     = OptionsDlg.Options.Port;
 		Options.Login    = OptionsDlg.Options.Login;
 		Options.Password = OptionsDlg.Options.Password;
 		Options.Sender   = OptionsDlg.Options.Sender;
 		CFrom.SetWindowTextW(Options.Sender);
-		PrintMessage(L"Настройки сохранены.");
+		PrintMessage(L"РќР°СЃС‚СЂРѕР№РєРё СЃРѕС…СЂР°РЅРµРЅС‹.");
 		break;
 
 	case IDCANCEL:
-		// Отмена.
-		PrintMessage(L"Настройки не сохранены!");
+		// РћС‚РјРµРЅР°.
+		PrintMessage(L"РќР°СЃС‚СЂРѕР№РєРё РЅРµ СЃРѕС…СЂР°РЅРµРЅС‹!");
 		break;
 
 	default:
-		// Не определённая ошибка диалога настроек.
-		PrintMessage(L"Неизвестная ошибка!");
+		// РќРµ РѕРїСЂРµРґРµР»С‘РЅРЅР°СЏ РѕС€РёР±РєР° РґРёР°Р»РѕРіР° РЅР°СЃС‚СЂРѕРµРє.
+		PrintMessage(L"РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°!");
 		break;
 	};
 }
 
 
-// Подготовка к отправке письма.
+// РџРѕРґРіРѕС‚РѕРІРєР° Рє РѕС‚РїСЂР°РІРєРµ РїРёСЃСЊРјР°.
 void CSMTPDlg::OnBnClickedBsend()
 {
-	// Добавляем новую запись очередь.
+	// Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РѕС‡РµСЂРµРґСЊ.
 	struct SendDataStruct NewMessage;
 
 	CFrom.GetWindowTextW(NewMessage.From);
@@ -337,82 +337,82 @@ void CSMTPDlg::OnBnClickedBsend()
 
 	SendData.push_back(NewMessage);
 
-	// Вызываем поток
+	// Р’С‹Р·С‹РІР°РµРј РїРѕС‚РѕРє
 	AfxBeginThread((AFX_THREADPROC)Sending, this);
 }
 
 
-// Отправка письма.
+// РћС‚РїСЂР°РІРєР° РїРёСЃСЊРјР°.
 AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 {
-	// Получаем указатель.
+	// РџРѕР»СѓС‡Р°РµРј СѓРєР°Р·Р°С‚РµР»СЊ.
 	CSMTPDlg *Dlg = (CSMTPDlg*)pParam;
 
-	// Проверяем, не запущен ли уже процесс.
+	// РџСЂРѕРІРµСЂСЏРµРј, РЅРµ Р·Р°РїСѓС‰РµРЅ Р»Рё СѓР¶Рµ РїСЂРѕС†РµСЃСЃ.
 	if(Dlg->Process == 0) {
 		Dlg->Process = 1;
 
-		// Определяем переменную для буфера.
+		// РћРїСЂРµРґРµР»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ РґР»СЏ Р±СѓС„РµСЂР°.
 		std::string buff;
 		int check = 0;
 		Base64Coder Coder;
 
-		// Проверяем наличие в очереди заданий.
+		// РџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ РІ РѕС‡РµСЂРµРґРё Р·Р°РґР°РЅРёР№.
 		while(Dlg->SendData.size() > 0) {
 			struct SendDataStruct *Data = &(Dlg->SendData.front());
 
-			// Инициализация Winsock 2.2
+			// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Winsock 2.2
 			WSADATA wsadata;
 			if(WSAStartup(MAKEWORD(2, 2), &wsadata)) {
-				PrintMessage(Dlg, L"Ошибка инициализации сокета №" + intToCStr(WSAGetLastError()));
+				PrintMessage(Dlg, L"РћС€РёР±РєР° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРѕРєРµС‚Р° в„–" + intToCStr(WSAGetLastError()));
 				check = 1;
 			}
 
-			// Проверка версии Winsock.
+			// РџСЂРѕРІРµСЂРєР° РІРµСЂСЃРёРё Winsock.
 			if(check == 0) {
 				if(LOBYTE(wsadata.wVersion) != 2 || HIBYTE(wsadata.wVersion) != 2) { 
-					PrintMessage(Dlg, L"Ошибка инициализации сокета №" + intToCStr(WSAGetLastError()));
+					PrintMessage(Dlg, L"РћС€РёР±РєР° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРѕРєРµС‚Р° в„–" + intToCStr(WSAGetLastError()));
 					check = 1;
 				}
 			}
 
-			// Регистрация сокета.
+			// Р РµРіРёСЃС‚СЂР°С†РёСЏ СЃРѕРєРµС‚Р°.
 			SOCKET s;
 			if(check == 0) {
 				if(INVALID_SOCKET == (s = socket(AF_INET, SOCK_STREAM, 0))) {
-					PrintMessage(Dlg, L"Ошибка инициализации сокета №" + intToCStr(WSAGetLastError()));
+					PrintMessage(Dlg, L"РћС€РёР±РєР° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРѕРєРµС‚Р° в„–" + intToCStr(WSAGetLastError()));
 					check = 1;
 				}
 			}
 
-			// Подключение к серверу.
+			// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє СЃРµСЂРІРµСЂСѓ.
 			sockaddr_in SendAddr;
 			ZeroMemory(&SendAddr, sizeof(SendAddr));
 
 			if(check == 0) {
 
-				// Получаем IP-адрес из имени хоста.
+				// РџРѕР»СѓС‡Р°РµРј IP-Р°РґСЂРµСЃ РёР· РёРјРµРЅРё С…РѕСЃС‚Р°.
 				SendAddr.sin_family           = AF_INET;
 				SendAddr.sin_addr.S_un.S_addr = hNameToIP(Dlg->Options.Server);
 				SendAddr.sin_port             = htons(Dlg->Options.Port);
 
-				// Подключение к серверу.
-				PrintMessage(Dlg, L"Подключение к серверу " + Dlg->Options.Server +
+				// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє СЃРµСЂРІРµСЂСѓ.
+				PrintMessage(Dlg, L"РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє СЃРµСЂРІРµСЂСѓ " + Dlg->Options.Server +
 					L" [" + CString(inet_ntoa(SendAddr.sin_addr)) + L"]...");
 
 				if(connect(s, (struct sockaddr *) &SendAddr, sizeof(SendAddr)) < 0) {
-					PrintMessage(Dlg, L"Ошибка соединения с сервером SMTP! (№" + intToCStr(WSAGetLastError()) + L")");
+					PrintMessage(Dlg, L"РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ СЃРµСЂРІРµСЂРѕРј SMTP! (в„–" + intToCStr(WSAGetLastError()) + L")");
 					check = 1;
 				}
 			}
 			if(check == 0) {
-				PrintMessage(Dlg, L"Соединение установлено!");
+				PrintMessage(Dlg, L"РЎРѕРµРґРёРЅРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ!");
 
-				// Получаем приглашение.
+				// РџРѕР»СѓС‡Р°РµРј РїСЂРёРіР»Р°С€РµРЅРёРµ.
 				check = RecvRCode(Dlg, s, 220, 0);
 			}
 
-			// Здороваемся с сервером (EHLO).
+			// Р—РґРѕСЂРѕРІР°РµРјСЃСЏ СЃ СЃРµСЂРІРµСЂРѕРј (EHLO).
 			if(check == 0) {
 				buff = "EHLO " + CStrToStr(Dlg->Options.Login) + "\r\n";
 				check = SendQuery(s, Dlg, buff);
@@ -420,13 +420,13 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 250, 0);
 
-			// Переходим к авторизации.
+			// РџРµСЂРµС…РѕРґРёРј Рє Р°РІС‚РѕСЂРёР·Р°С†РёРё.
 			if(check == 0)
 				check = SendQuery(s, Dlg, "AUTH LOGIN\r\n");
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 334, 0);
 			
-			// Авторизуемся.
+			// РђРІС‚РѕСЂРёР·СѓРµРјСЃСЏ.
 			if(check == 0) {
 				buff = Coder.base64_encode((const unsigned char*)CStrToStr(Dlg->Options.Login).c_str(),
 					Dlg->Options.Login.GetLength()) + "\r\n";
@@ -443,7 +443,7 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 235, 0);
 			
-			// Указываем отправителя.
+			// РЈРєР°Р·С‹РІР°РµРј РѕС‚РїСЂР°РІРёС‚РµР»СЏ.
 			if(check == 0) {
 				buff = "MAIL FROM:" + CStrToStr(Dlg->SendData[0].From) + "\r\n";
 				check = SendQuery(s, Dlg, buff);
@@ -451,7 +451,7 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 250, 0);
 
-			// Указываем получателя.
+			// РЈРєР°Р·С‹РІР°РµРј РїРѕР»СѓС‡Р°С‚РµР»СЏ.
 			if(check == 0) {
 				buff = "RCPT TO:" + CStrToStr(Dlg->SendData[0].To) + "\r\n";
 				check = SendQuery(s, Dlg, buff);
@@ -459,25 +459,25 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 250, 251);
 			
-			// Указываем получателя.
+			// РЈРєР°Р·С‹РІР°РµРј РїРѕР»СѓС‡Р°С‚РµР»СЏ.
 			if(check == 0)
 				check = SendQuery(s, Dlg, "DATA\r\n");
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 354, 0);
 
-			// Указываем отправителя.
+			// РЈРєР°Р·С‹РІР°РµРј РѕС‚РїСЂР°РІРёС‚РµР»СЏ.
 			if(check == 0) {
 				buff = "From:" + CStrToStr(Dlg->SendData[0].From) + "\r\n";
 				check = SendQuery(s, Dlg, buff);
 			}
 
-			// Указываем получателя.
+			// РЈРєР°Р·С‹РІР°РµРј РїРѕР»СѓС‡Р°С‚РµР»СЏ.
 			if(check == 0) {
 				buff = "To:" + CStrToStr(Dlg->SendData[0].To) + "\r\n";
 				check = SendQuery(s, Dlg, buff);
 			}
 
-			// Указываем заголовок.
+			// РЈРєР°Р·С‹РІР°РµРј Р·Р°РіРѕР»РѕРІРѕРє.
 			if(check == 0) {
 				/*
 				buff = "Subject: " +
@@ -492,7 +492,7 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 				check = SendQuery(s, Dlg, buff);
 			}
 
-			// Указываем данные.
+			// РЈРєР°Р·С‹РІР°РµРј РґР°РЅРЅС‹Рµ.
 			if(check == 0) {
 				buff = "\r\n" + CStrToStr(Dlg->SendData[0].Text) + "\r\n.\r\n";
 				check = SendQuery(s, Dlg, buff);
@@ -500,56 +500,56 @@ AFX_THREADPROC CSMTPDlg::Sending(LPVOID pParam)
 			if(check == 0)
 				check = RecvRCode(Dlg, s, 250, 0);
 
-			// Завершаем сеанс.
+			// Р—Р°РІРµСЂС€Р°РµРј СЃРµР°РЅСЃ.
 			if(check == 0)
 				check = SendQuery(s, Dlg, "QUIT\r\n");
 
-			// Сообщение отправлено.
+			// РЎРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ.
 			if(check == 0)
-				PrintMessage(Dlg, L"Сообщение отправлено!");
+				PrintMessage(Dlg, L"РЎРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ!");
 			
 			closesocket(s);
 			WSACleanup();
 
-			// Удаляем задание из очереди.
+			// РЈРґР°Р»СЏРµРј Р·Р°РґР°РЅРёРµ РёР· РѕС‡РµСЂРµРґРё.
 			Dlg->SendData.erase(Dlg->SendData.begin());
 			check = 0;
 		}
 	}
 
-	// Снимаем метку процесса.
+	// РЎРЅРёРјР°РµРј РјРµС‚РєСѓ РїСЂРѕС†РµСЃСЃР°.
 	Dlg->Process = 0;
 
 	return AFX_THREADPROC();
 }
 
 
-// Удобный вывод сообщения.
+// РЈРґРѕР±РЅС‹Р№ РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ.
 void CSMTPDlg::PrintMessage(CString Message)
 {
-	// Вывод сообщения.
+	// Р’С‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ.
 	CString Buff;
 	CInfo.GetWindowTextW(Buff);
 	CInfo.SetWindowTextW(Buff + Message + L"\r\n");
 
-	// Прокрутка текста.
+	// РџСЂРѕРєСЂСѓС‚РєР° С‚РµРєСЃС‚Р°.
 	CInfo.LineScroll(CInfo.GetLineCount());
 	//CInfo.SendMessage(EM_SETSEL,-1,-1);
 }
 void CSMTPDlg::PrintMessage(CSMTPDlg* Dlg, CString Message)
 {
-	// Вывод сообщения.
+	// Р’С‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ.
 	CString Buff;
 	Dlg->CInfo.GetWindowTextW(Buff);
 	Dlg->CInfo.SetWindowTextW(Buff + Message + L"\r\n");
 
-	// Прокрутка текста.
+	// РџСЂРѕРєСЂСѓС‚РєР° С‚РµРєСЃС‚Р°.
 	Dlg->CInfo.LineScroll(Dlg->CInfo.GetLineCount());
 	//Dlg->CInfo.SendMessage(EM_SETSEL,-1,-1);
 }
 
 
-// Удобный перевод числа в CString.
+// РЈРґРѕР±РЅС‹Р№ РїРµСЂРµРІРѕРґ С‡РёСЃР»Р° РІ CString.
 CString CSMTPDlg::intToCStr(int value)
 {
 	CString MSG;
@@ -557,7 +557,7 @@ CString CSMTPDlg::intToCStr(int value)
 	return MSG;
 }
 
-// Удобный перевод CString в String.
+// РЈРґРѕР±РЅС‹Р№ РїРµСЂРµРІРѕРґ CString РІ String.
 std::string CSMTPDlg::CStrToStr(CString Value)
 {
 	USES_CONVERSION;
@@ -565,7 +565,7 @@ std::string CSMTPDlg::CStrToStr(CString Value)
 }
 
 
-// Удобное получение IP из имени.
+// РЈРґРѕР±РЅРѕРµ РїРѕР»СѓС‡РµРЅРёРµ IP РёР· РёРјРµРЅРё.
 DWORD CSMTPDlg::hNameToIP(CString Name)
 {
 	hostent* hn = gethostbyname(CStrToStr(Name).c_str());
@@ -573,7 +573,7 @@ DWORD CSMTPDlg::hNameToIP(CString Name)
 }
 
 
-// Удобное выделение кода результата.
+// РЈРґРѕР±РЅРѕРµ РІС‹РґРµР»РµРЅРёРµ РєРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р°.
 int CSMTPDlg::GetRCode(char buff[])
 {
 	int result = 0;
@@ -584,7 +584,7 @@ int CSMTPDlg::GetRCode(char buff[])
 }
 
 
-// Удобный приём кода результата.
+// РЈРґРѕР±РЅС‹Р№ РїСЂРёС‘Рј РєРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚Р°.
 int CSMTPDlg::RecvRCode(CSMTPDlg* Dlg, SOCKET s, int FirstValidCode, int SecondValidCode)
 {
 	char rbuff[65536];
@@ -593,7 +593,7 @@ int CSMTPDlg::RecvRCode(CSMTPDlg* Dlg, SOCKET s, int FirstValidCode, int SecondV
 	int RCode = 0;
 	
 	if((recived = recv(s, rbuff, 65536, 0)) < 0) {
-		PrintMessage(Dlg, L"Ошибка приёма сообщения! (№" + intToCStr(WSAGetLastError()) + L")");
+		PrintMessage(Dlg, L"РћС€РёР±РєР° РїСЂРёС‘РјР° СЃРѕРѕР±С‰РµРЅРёСЏ! (в„–" + intToCStr(WSAGetLastError()) + L")");
 		return 1;
 	}
 	else {
@@ -615,7 +615,7 @@ int CSMTPDlg::RecvRCode(CSMTPDlg* Dlg, SOCKET s, int FirstValidCode, int SecondV
 		}
 		
 		if(check == 1) {
-			PrintMessage(Dlg, L"Ошибка протокола! (Код результата: " + intToCStr(RCode) + L")");
+			PrintMessage(Dlg, L"РћС€РёР±РєР° РїСЂРѕС‚РѕРєРѕР»Р°! (РљРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°: " + intToCStr(RCode) + L")");
 			return 1;
 		}
 	}
@@ -624,11 +624,11 @@ int CSMTPDlg::RecvRCode(CSMTPDlg* Dlg, SOCKET s, int FirstValidCode, int SecondV
 }
 
 
-// Удобная отправка запроса.
+// РЈРґРѕР±РЅР°СЏ РѕС‚РїСЂР°РІРєР° Р·Р°РїСЂРѕСЃР°.
 int CSMTPDlg::SendQuery(SOCKET s, CSMTPDlg * Dlg, std::string buffer)
 {
 	if(SOCKET_ERROR == (send(s, buffer.c_str(), buffer.size(), 0))) {
-		PrintMessage(Dlg, L"Ошибка отправки сообщения! (№" + intToCStr(WSAGetLastError()) + L")");
+		PrintMessage(Dlg, L"РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ! (в„–" + intToCStr(WSAGetLastError()) + L")");
 		return 1;
 	}
 	return 0;
